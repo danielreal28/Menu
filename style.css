@@ -1,0 +1,34 @@
+/* Estilos para las listas de platos dentro del slider */
+.menu-list {
+    list-style: none;
+    padding: 0;
+    margin: 10px 0 0 0;
+    text-align: left;
+}
+
+.menu-list li {
+    font-size: 1.3rem;
+    font-weight: 600;
+    color: #e5e7eb;
+    margin-bottom: 8px;
+    position: relative;
+    padding-left: 25px;
+}
+
+/* Un puntito naranja sutil antes de cada plato */
+.menu-list li::before {
+    content: '•';
+    position: absolute;
+    left: 5px;
+    color: #f59e0b;
+    font-size: 1.6rem;
+    top: -4px;
+}
+
+.slide-subtitle {
+    margin: 0;
+    font-size: 1rem;
+    color: #9ca3af;
+    text-align: left;
+    font-style: italic;
+}
