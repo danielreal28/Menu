@@ -3,11 +3,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Menú Digital Profesional - Rapid Burger</title>
+    <title>Menú Digital Profesional - Blue House</title>
     <style>
         /* --- ESTILOS BLINDADOS PARA LA TV --- */
         body {
-            background-color: #060813 !important; /* Fuerza el fondo oscuro profundo */
+            background-color: #060813 !important;
             margin: 0;
             padding: 0;
             font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -18,7 +18,6 @@
             box-sizing: border-box;
         }
 
-        /* Destello azul de fondo para dar elegancia */
         body::before {
             content: '';
             position: absolute;
@@ -32,7 +31,6 @@
             z-index: 0;
         }
 
-        /* Contenedor principal estilo Cristal (Glassmorphism) */
         .slider-container {
             position: relative;
             z-index: 1;
@@ -46,11 +44,10 @@
             border-radius: 24px;
             padding: 25px;
             box-shadow: 0 25px 50px rgba(0, 0, 0, 0.9);
-            display: table; /* Reemplazo seguro para asegurar compatibilidad en TV */
+            display: table;
             box-sizing: border-box;
         }
 
-        /* Encabezado del Negocio */
         .header-branding {
             width: 100%;
             margin-bottom: 20px;
@@ -61,7 +58,7 @@
 
         .logo-text {
             float: left;
-            font-size: 2.4rem;
+            font-size: 2.2rem;
             font-weight: 900;
             margin: 0;
             letter-spacing: 2px;
@@ -75,7 +72,7 @@
 
         .promo-text {
             float: right;
-            font-size: 1.2rem;
+            font-size: 1.1rem;
             font-weight: 700;
             color: #ffffff;
             margin: 0;
@@ -85,7 +82,6 @@
             border-radius: 50px;
         }
 
-        /* Contenedor del Carrusel */
         .slider-wrapper {
             position: relative;
             width: 100%;
@@ -96,7 +92,6 @@
             box-shadow: inset 0 0 30px rgba(0,0,0,0.7);
         }
 
-        /* Cada diapositiva de comida */
         .slide {
             position: absolute;
             top: 0;
@@ -107,7 +102,7 @@
             transform: scale(1.02);
             transition: opacity 1.2s ease-in-out, transform 1.2s ease-in-out;
             background-size: cover;
-            background-position: center !important; /* Fuerza a centrar la imagen perfectamente */
+            background-position: center !important;
             background-repeat: no-repeat;
         }
 
@@ -116,7 +111,6 @@
             transform: scale(1);
         }
 
-        /* Capa oscura encima de la foto para que las letras blancas resalten un 100% */
         .slide::after {
             content: '';
             position: absolute;
@@ -127,7 +121,6 @@
             background: linear-gradient(to right, rgba(6, 8, 19, 0.85) 40%, rgba(6, 8, 19, 0.2) 100%);
         }
 
-        /* Tarjeta de información flotante súper legible */
         .slide-info {
             position: absolute;
             bottom: 40px;
@@ -145,11 +138,10 @@
             margin: 0 0 15px 0;
             font-size: 2rem;
             font-weight: 800;
-            color: #f59e0b; /* Título en dorado para que se vea fino */
+            color: #f59e0b;
             text-shadow: 0 2px 4px rgba(0,0,0,0.5);
         }
 
-        /* Estilos de la lista de comida */
         .menu-list {
             list-style: none;
             padding: 0;
@@ -170,7 +162,7 @@
             content: '✓';
             position: absolute;
             left: 0;
-            color: #10b981; /* Gancho verde de éxito */
+            color: #10b981;
             font-size: 1.3rem;
             font-weight: 900;
         }
@@ -182,7 +174,6 @@
             font-style: italic;
         }
 
-        /* Barra de progreso de tiempo */
         .progress-bar-container {
             width: 100%;
             height: 6px;
@@ -199,7 +190,6 @@
             box-shadow: 0 0 12px #f59e0b;
         }
 
-        /* Firma de Marca Registrada */
         .copyright {
             text-align: center;
             font-size: 0.85rem;
@@ -215,8 +205,8 @@
     <div class="slider-container">
         
         <div class="header-branding">
-            <h1 class="logo-text">RAPID <span class="accent">BURGER & GRILL</span></h1>
-            <p class="promo-text">🔥 MENÚ DIGITAL 🔥</p>
+            <h1 class="logo-text">BLUE HOUSE <span class="accent">BAR RESTAURANTE & CLUB</span></h1>
+            <p class="promo-text">✨ MENÚ EXCLUSIVO ✨</p>
         </div>
 
         <div class="slider-wrapper">
