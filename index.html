@@ -4,7 +4,211 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Menú Digital Profesional - Rapid Burger</title>
-    <link rel="stylesheet" href="style.css">
+    <style>
+        /* --- ESTILOS BLINDADOS PARA LA TV --- */
+        body {
+            background-color: #060813 !important; /* Fuerza el fondo oscuro profundo */
+            margin: 0;
+            padding: 0;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display: block;
+            height: 100vh;
+            overflow: hidden;
+            color: #ffffff;
+            box-sizing: border-box;
+        }
+
+        /* Destello azul de fondo para dar elegancia */
+        body::before {
+            content: '';
+            position: absolute;
+            width: 400px;
+            height: 400px;
+            background: rgba(59, 130, 246, 0.15);
+            filter: blur(150px);
+            top: 5%;
+            left: 5%;
+            border-radius: 50%;
+            z-index: 0;
+        }
+
+        /* Contenedor principal estilo Cristal (Glassmorphism) */
+        .slider-container {
+            position: relative;
+            z-index: 1;
+            width: 96vw;
+            height: 94vh;
+            margin: 3vh auto;
+            background: rgba(15, 23, 42, 0.75);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
+            border-radius: 24px;
+            padding: 25px;
+            box-shadow: 0 25px 50px rgba(0, 0, 0, 0.9);
+            display: table; /* Reemplazo seguro para asegurar compatibilidad en TV */
+            box-sizing: border-box;
+        }
+
+        /* Encabezado del Negocio */
+        .header-branding {
+            width: 100%;
+            margin-bottom: 20px;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+            padding-bottom: 12px;
+            overflow: hidden;
+        }
+
+        .logo-text {
+            float: left;
+            font-size: 2.4rem;
+            font-weight: 900;
+            margin: 0;
+            letter-spacing: 2px;
+            text-shadow: 0 0 15px rgba(255, 255, 255, 0.2);
+        }
+
+        .logo-text .accent {
+            color: #f59e0b;
+            text-shadow: 0 0 20px rgba(245, 158, 11, 0.5);
+        }
+
+        .promo-text {
+            float: right;
+            font-size: 1.2rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin: 0;
+            background: rgba(245, 158, 11, 0.2);
+            border: 1px solid #f59e0b;
+            padding: 6px 18px;
+            border-radius: 50px;
+        }
+
+        /* Contenedor del Carrusel */
+        .slider-wrapper {
+            position: relative;
+            width: 100%;
+            height: 68vh;
+            border-radius: 16px;
+            overflow: hidden;
+            background: #090d16;
+            box-shadow: inset 0 0 30px rgba(0,0,0,0.7);
+        }
+
+        /* Cada diapositiva de comida */
+        .slide {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            opacity: 0;
+            transform: scale(1.02);
+            transition: opacity 1.2s ease-in-out, transform 1.2s ease-in-out;
+            background-size: cover;
+            background-position: center !important; /* Fuerza a centrar la imagen perfectamente */
+            background-repeat: no-repeat;
+        }
+
+        .slide.active {
+            opacity: 1;
+            transform: scale(1);
+        }
+
+        /* Capa oscura encima de la foto para que las letras blancas resalten un 100% */
+        .slide::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(to right, rgba(6, 8, 19, 0.85) 40%, rgba(6, 8, 19, 0.2) 100%);
+        }
+
+        /* Tarjeta de información flotante súper legible */
+        .slide-info {
+            position: absolute;
+            bottom: 40px;
+            left: 40px;
+            z-index: 2;
+            background: rgba(10, 15, 30, 0.85);
+            border: 1px solid rgba(255, 255, 255, 0.15);
+            padding: 30px 45px;
+            border-radius: 20px;
+            max-width: 550px;
+            box-shadow: 0 20px 40px rgba(0,0,0,0.6);
+        }
+
+        .slide-info h2 {
+            margin: 0 0 15px 0;
+            font-size: 2rem;
+            font-weight: 800;
+            color: #f59e0b; /* Título en dorado para que se vea fino */
+            text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+        }
+
+        /* Estilos de la lista de comida */
+        .menu-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+        }
+
+        .menu-list li {
+            font-size: 1.4rem;
+            font-weight: 700;
+            color: #ffffff;
+            margin-bottom: 10px;
+            position: relative;
+            padding-left: 25px;
+            text-shadow: 0 1px 3px rgba(0,0,0,0.8);
+        }
+
+        .menu-list li::before {
+            content: '✓';
+            position: absolute;
+            left: 0;
+            color: #10b981; /* Gancho verde de éxito */
+            font-size: 1.3rem;
+            font-weight: 900;
+        }
+
+        .slide-subtitle {
+            margin: 0 0 10px 0;
+            font-size: 1.1rem;
+            color: #9ca3af;
+            font-style: italic;
+        }
+
+        /* Barra de progreso de tiempo */
+        .progress-bar-container {
+            width: 100%;
+            height: 6px;
+            background: rgba(255, 255, 255, 0.1);
+            border-radius: 10px;
+            margin-top: 25px;
+            overflow: hidden;
+        }
+
+        .progress-bar {
+            width: 0%;
+            height: 100%;
+            background: #f59e0b;
+            box-shadow: 0 0 12px #f59e0b;
+        }
+
+        /* Firma de Marca Registrada */
+        .copyright {
+            text-align: center;
+            font-size: 0.85rem;
+            color: #4b5563;
+            margin-top: 15px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+        }
+    </style>
 </head>
 <body>
 
@@ -12,13 +216,12 @@
         
         <div class="header-branding">
             <h1 class="logo-text">RAPID <span class="accent">BURGER & GRILL</span></h1>
-            <p class="promo-text">🔥 MENÚ DIGITAL DEL DÍA 🔥</p>
+            <p class="promo-text">🔥 MENÚ DIGITAL 🔥</p>
         </div>
 
         <div class="slider-wrapper">
 
-            <div class="slide active">
-                <img src="https://images.unsplash.com/photo-1567620832903-9fc6debc209f?q=80&w=1200" alt="Alitas">
+            <div class="slide active" style="background-image: url('https://images.unsplash.com/photo-1567620832903-9fc6debc209f?auto=format&fit=crop&w=1000&q=80');">
                 <div class="slide-info">
                     <h2>🍗 ALITAS EXTREMAS</h2>
                     <ul class="menu-list">
@@ -29,8 +232,7 @@
                 </div>
             </div>
 
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?q=80&w=1200" alt="Pollo Frito">
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1626082927389-6cd097cdc6ec?auto=format&fit=crop&w=1000&q=80');">
                 <div class="slide-info">
                     <h2>🍗 NUESTROS POLLOS</h2>
                     <ul class="menu-list">
@@ -41,8 +243,7 @@
                 </div>
             </div>
 
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1544025162-d76694265947?q=80&w=1200" alt="Cerdo">
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1544025162-d76694265947?auto=format&fit=crop&w=1000&q=80');">
                 <div class="slide-info">
                     <h2>🐷 CERDO DE LA CASA</h2>
                     <ul class="menu-list">
@@ -53,20 +254,18 @@
                 </div>
             </div>
 
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1568901346375-23c9450c58cd?q=80&w=1200" alt="Street Food">
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1568901346375-23c9450c58cd?auto=format&fit=crop&w=1000&q=80');">
                 <div class="slide-info">
                     <h2>🍔 STREET FOOD BANQUETE</h2>
                     <ul class="menu-list">
                         <li>Hamburguesa de la Casa</li>
                         <li>Burritos & Nachos Grandes</li>
-                        <li><small>(Opciones: Res, Pollo o Camarones)</small></li>
+                        <li>Opciones: Res, Pollo o Camarones</li>
                     </ul>
                 </div>
             </div>
 
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?q=80&w=1200" alt="Pescados">
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1519708227418-c8fd9a32b7a2?auto=format&fit=crop&w=1000&q=80');">
                 <div class="slide-info">
                     <h2>🐟 DEL MAR AL PLATO</h2>
                     <ul class="menu-list">
@@ -77,8 +276,7 @@
                 </div>
             </div>
 
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1551183053-bf91a1d81141?q=80&w=1200" alt="Pastas">
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1551183053-bf91a1d81141?auto=format&fit=crop&w=1000&q=80');">
                 <div class="slide-info">
                     <h2>🍝 PASTAS ESPECIALES</h2>
                     <p class="slide-subtitle">Salsa Alfredo o Pomodoro con:</p>
@@ -89,8 +287,7 @@
                 </div>
             </div>
 
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1600891964599-f61ba0e24092?q=80&w=1200" alt="Bistec">
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1600891964599-f61ba0e24092?auto=format&fit=crop&w=1000&q=80');">
                 <div class="slide-info">
                     <h2>🥩 BISTEC EN SU PUNTO</h2>
                     <ul class="menu-list">
@@ -101,8 +298,7 @@
                 </div>
             </div>
 
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?q=80&w=1200" alt="Mofongo">
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1534422298391-e4f8c172dddb?auto=format&fit=crop&w=1000&q=80');">
                 <div class="slide-info">
                     <h2>🇩🇴 AUTÉNTICO MOFONGO</h2>
                     <p class="slide-subtitle">Majado con chicharrón y relleno de:</p>
@@ -112,8 +308,7 @@
                 </div>
             </div>
 
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?q=80&w=1200" alt="Pechugas">
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1604908176997-125f25cc6f3d?auto=format&fit=crop&w=1000&q=80');">
                 <div class="slide-info">
                     <h2>✨ PECHUGAS DE POLLO</h2>
                     <ul class="menu-list">
@@ -124,20 +319,18 @@
                 </div>
             </div>
 
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?q=80&w=1200" alt="Picaderas">
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1594212699903-ec8a3eca50f5?auto=format&fit=crop&w=1000&q=80');">
                 <div class="slide-info">
                     <h2>🧀 ANTOJOS RÁPIDOS</h2>
                     <ul class="menu-list">
                         <li>Salami Frito o Guisado</li>
                         <li>Jamoneta Frita / Queso Frito</li>
-                        <li>Huevos (Frito, Salteado, Revoltillo, Tortilla)</li>
+                        <li>Huevos (Frito, Salteado o Revoltillo)</li>
                     </ul>
                 </div>
             </div>
 
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1521390188846-e2a3a97453a0?q=80&w=1200" alt="Sandwiches">
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1521390188846-e2a3a97453a0?auto=format&fit=crop&w=1000&q=80');">
                 <div class="slide-info">
                     <h2>🥪 SANDWICHES PREMIUM</h2>
                     <ul class="menu-list">
@@ -147,8 +340,7 @@
                 </div>
             </div>
 
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1573080496219-bb080dd4f877?q=80&w=1200" alt="Guarniciones">
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1573080496219-bb080dd4f877?auto=format&fit=crop&w=1000&q=80');">
                 <div class="slide-info">
                     <h2>🍟 PARA ACOMPAÑAR</h2>
                     <ul class="menu-list">
@@ -159,8 +351,7 @@
                 </div>
             </div>
 
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1603133872878-684f208fb84b?q=80&w=1200" alt="Chofan">
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1603133872878-684f208fb84b?auto=format&fit=crop&w=1000&q=80');">
                 <div class="slide-info">
                     <h2>🍚 CHOFAN ARROZ FRITO</h2>
                     <ul class="menu-list">
@@ -171,8 +362,7 @@
                 </div>
             </div>
 
-            <div class="slide">
-                <img src="https://images.unsplash.com/photo-1550304943-4f24f54ddde9?q=80&w=1200" alt="Ensaladas">
+            <div class="slide" style="background-image: url('https://images.unsplash.com/photo-1550304943-4f24f54ddde9?auto=format&fit=crop&w=1000&q=80');">
                 <div class="slide-info">
                     <h2>🥗 ENSALADAS FRESCAS</h2>
                     <ul class="menu-list">
